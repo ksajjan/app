@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block Title %}
+	<title> Learning With Python </title>
+{% endblock %}
+
+{% block blogpost %}
+	<div class="container">
+		<div class="row">
+		
+		{% for tag in unique_tags %}
+			<div class="col-xs-6 col-lg-4">
+				<h2>{{ tag }}</h2>
+				{% for post in posts %}
+					{% if post.Tag == tag  %}
+						<a href="{{ url_for('LearnWithPython_post', name=post.path.replace('LearnWithPython/', '')) }}">{{ post.title }}</a>
+						<br>
+						<small> {{ post.date }}</small>
+						
+						<hr>
+					{% endif %}
+				{% endfor %}
+
+
+
+			</div>
+
+			
+		{% endfor %}
+
+    	</div>
+    </div>
+
+
+{% endblock %}
+
